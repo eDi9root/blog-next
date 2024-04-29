@@ -1,9 +1,9 @@
 "use client"
 
 import React from 'react'
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function page() {
+export default function Dashboard() {
   return (
     <div className='w-full'>
       <motion.div
@@ -23,11 +23,8 @@ export default function page() {
           <div>
             <div className='flex gap-x-6 p-4'>
               <h1 className='text-2xl'>
-                Dev Blog
+                Dashboard
               </h1>
-              <p className='text-muted-foreground max-w-sm text-sm'>
-                Own Space for writing down thoughts, and sharing information
-              </p>
             </div>
           </div>
         </div> 

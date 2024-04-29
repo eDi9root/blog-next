@@ -28,7 +28,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <main>
-              <div className="max-w-[100rem] mx-auto">
+              <div className="max-w-[80rem] mx-auto">
                 <div className="gap-10 flex md:mt-5 flex-col md:flex-row">
                   <LeftBar />
                     {children}

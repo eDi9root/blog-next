@@ -11,6 +11,8 @@ export default function profile() {
     const user = useUser((state) => state.user)
     const setUser = useUser((state) => state.setUser);
 
+    const isAdmin = user?.user_metadata?.role === "admin"
+
     const supabase = createBrowserClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -37,13 +39,15 @@ export default function profile() {
                 <p className="text-sm text-muted-foreground">{user?.user_metadata?.email}</p>
             </div>
         </div>
-        {/* <div className='w-full mt-5'>
-            <Link href='/dashboard' className='block'>
-                <Button variant="secondary" size="custom3">
-                    <RxDashboard />Dashboard
-                </Button>
-            </Link>
-        </div>  */}
+        <div className='w-full mt-5'>
+            {isAdmin && (
+                <Link href='/dashboard' className='block'>
+                    <Button variant="secondary" size="custom3">
+                        <RxDashboard />Dashboard
+                    </Button>
+                </Link>
+            )}
+        </div> 
         <div className='w-full mt-5 my-3'>
             <Button variant="secondary" size='custom3' onClick={handleLogout}>
                 <IoLogOutOutline />Log out
