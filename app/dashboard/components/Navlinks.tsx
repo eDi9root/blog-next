@@ -39,7 +39,7 @@ export default function Navlinks() {
             },
         }}
         >
-            <div className='flex items-center gap-5 pb-2 border-b pt-5'>
+            <div className='flex items-center gap-5 pb-2 border-b pt-5 pl-2'>
                 {links.map(({href, text, Icon}, index) => {
                     return <Link 
                         href={href} 

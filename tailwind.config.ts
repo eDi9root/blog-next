@@ -59,6 +59,10 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        markdownPre: {
+          DEFAULT: "hsl(var(--markdownPre))",
+          foreground: "hsl(var(--markdownPre-foreground))",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",

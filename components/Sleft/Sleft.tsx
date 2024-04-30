@@ -13,7 +13,7 @@ export default function LeftBar() {
   
   return <div>
     <motion.div
-    className='hidden md:block w-full md:w-24 h-fit sticky top-5 rounded-2xl pt-5'
+    className='md:block w-full md:w-24 h-fit sticky top-5 rounded-2xl pt-5 pl-2'
     initial={{
       y: 15, 
       opacity: 0
@@ -30,8 +30,8 @@ export default function LeftBar() {
     >
       <div className='md:w-24 w-full p-3 border bg-popover border-neutral-800 
       rounded-2xl h-full'>
-        <div className='flex flex-col'>
-          <div className='flex flex-col gap-x-1 w-full h-fit items-center gap-y-4'>
+        <div className='flex md:flex-col'>
+          <div className='flex md:flex-col gap-x-1 w-full h-fit items-center justify-center gap-y-4'>
             <Link href={"/"}>
               <div className='bg-secondary hover:bg-secondary/80 h-[40px] w-[70px]
               rounded-xl flex items-center justify-center'>
