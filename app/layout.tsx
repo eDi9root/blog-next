@@ -31,8 +31,7 @@ export default function RootLayout({
             <main>
               <div className="max-w-[100rem] mx-auto">
                 <div className="gap-10 flex md:mt-5 flex-col md:flex-row">
-                  <LeftBar />
-                    {children}
+                  {children}
                   <RightBar />
                 </div>
               </div>              
