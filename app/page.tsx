@@ -21,7 +21,7 @@ export default function page() {
       >
         <div className='bg-popover lg:bg-transparent rounded-2xl'>
           <div>
-            <div className='flex gap-x-6 p-4'>
+            <div className='flex gap-x-6 p-4 mt-2'>
               <h1 className='text-2xl'>
                 Dev Blog
               </h1>
