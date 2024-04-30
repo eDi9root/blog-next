@@ -5,6 +5,7 @@ import "./globals.css";
 import LeftBar from "@/components/Left/LeftBar";
 import RightBar from "@/components/Right/RightBar";
 import SessionProvider from "@/components/SessionProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <main>
-              <div className="max-w-[80rem] mx-auto">
+              <div className="max-w-[100rem] mx-auto">
                 <div className="gap-10 flex md:mt-5 flex-col md:flex-row">
                   <LeftBar />
                     {children}
@@ -36,6 +37,7 @@ export default function RootLayout({
                 </div>
               </div>              
             </main>
+            <Toaster />
             
           </ThemeProvider>
           <SessionProvider />
