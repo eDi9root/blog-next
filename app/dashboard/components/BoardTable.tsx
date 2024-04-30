@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Switch } from "@/components/ui/switch"
 
 export default function BoardTable() {
   return (
@@ -25,8 +26,8 @@ export default function BoardTable() {
 
       <div className='grid grid-cols-5 p-5'>
         <h1 className='col-span-2'>Blog title</h1>
-        <h1>Blog title</h1>
-        <h1>Blog title</h1>
+        <Switch checked={false} />
+        <Switch checked={true} />
         <DropdownMenu>
             <DropdownMenuTrigger><BsThreeDots /></DropdownMenuTrigger>
             <DropdownMenuContent className='bg-background'>
@@ -47,7 +48,7 @@ export default function BoardTable() {
 
 const Actions = () => {
     return (
-        <div className='flex justify-end items-center gap-4 flex-wrap p-2'>
+        <div className='flex justify-end items-center gap-2 flex-wrap p-2'>
             <Button variant="outline" className='gap-x-2'><FaEye /> View</Button>
             <Button variant="outline" className='gap-x-2'><MdDeleteSweep />Delete</Button>
             <Button variant="outline" className='gap-x-2'><FaEdit />Edit</Button>
