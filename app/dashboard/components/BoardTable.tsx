@@ -13,8 +13,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Switch } from "@/components/ui/switch"
+import { readBlog } from '@/lib/actions/blog';
 
-export default function BoardTable() {
+export default async function BoardTable() {
+  const { data: blogs } = await readBlog()
+
   return (
     <div className='border bg-border rounded-md'>
       <div className='grid grid-cols-5 p-5 text-muted-foreground'>
@@ -23,23 +26,30 @@ export default function BoardTable() {
         <h1>Public</h1>
       </div>
       <div className="border border-muted-foreground text-neutral-300" />
+      
+      {blogs?.map((blog, index) => {
+        return (
+          <div className='grid grid-cols-5 p-5' key={index}>
+            <h1 className='col-span-2'>{blog.title}</h1>
+            <Switch checked={blog.is_comment} />
+            <Switch checked={blog.is_public} />
+            <DropdownMenu>
+                <DropdownMenuTrigger><BsThreeDots /></DropdownMenuTrigger>
+                <DropdownMenuContent className='bg-background'>
+                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem className='flex justify-center'>
+                        <Actions />
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+            
+          </div>
+        )
+      })}
+      
 
-      <div className='grid grid-cols-5 p-5'>
-        <h1 className='col-span-2'>Blog title</h1>
-        <Switch checked={false} />
-        <Switch checked={true} />
-        <DropdownMenu>
-            <DropdownMenuTrigger><BsThreeDots /></DropdownMenuTrigger>
-            <DropdownMenuContent className='bg-background'>
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className='flex justify-center'>
-                    <Actions />
-                </DropdownMenuItem>
-            </DropdownMenuContent>
-        </DropdownMenu>
-        
-      </div>
+
       <div className="border border-muted-foreground text-neutral-300" />
     </div>
     
