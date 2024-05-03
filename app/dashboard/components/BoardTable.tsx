@@ -20,6 +20,7 @@ import { readBlog, updateBlogById } from '@/lib/actions/blog';
 import DeleteAlert from './DeleteAlert';
 import SwitchForm from './SwitchForm';
 import { SchemaType } from '../schema';
+import Link from 'next/link';
 
 export default async function BoardTable() {
   const { data: blogs } = await readBlog()
@@ -86,10 +87,12 @@ const Actions = ({id} : {id:string}) => {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost2" size="icon" className='gap-x-2'>
-                <FaEdit />
-                <span className='sr-only'>Edit</span>
-              </Button>
+              <Link href={`/dashboard/blog/edit/${id}`} >
+                <Button variant="ghost2" size="icon" className='gap-x-2'>
+                  <FaEdit />
+                  <span className='sr-only'>Edit</span>
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent>Edit</TooltipContent>
           </Tooltip>

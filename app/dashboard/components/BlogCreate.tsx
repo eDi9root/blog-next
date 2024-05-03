@@ -28,12 +28,15 @@ import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import MarkdownPre from "@/components/markdown/MarkdownPre";
 import { BlogFormSchema, SchemaType } from "../schema";
+import { IBlogDetail } from "@/lib/types";
 
 
 export default function BlogCreate({
-    onHandleSubmit
+    onHandleSubmit,
+    blog
 }: {
     onHandleSubmit:(data: SchemaType) =>void
+    blog?:IBlogDetail
 }) {
   const [isPending, startTransition] = useTransition()
   const [isPre, setPre] = useState<boolean>(false);
@@ -42,11 +45,11 @@ export default function BlogCreate({
     mode: "all",
     resolver: zodResolver(BlogFormSchema),
     defaultValues: {
-      title: "",
-      content: "",
-      img_url: "",
-      is_public: true,
-      is_comment: false,
+      title: blog?.title || "",
+      content: blog?.blog_content?.content || "",
+      img_url: blog?.img_url || "",
+      is_public: blog?.is_public || true,
+      is_comment: blog?.is_comment || false,
     },
   })
 

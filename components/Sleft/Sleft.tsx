@@ -6,11 +6,12 @@ import { PiHouseLight } from "react-icons/pi";
 import { motion } from "framer-motion"
 import { ThemeToggle } from '../theme.toggle';
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { useRouter } from 'next/navigation';
 
 
 
 export default function LeftBar() {
-  
+  const router = useRouter()
   return <div>
     <motion.div
     className='md:block w-full md:w-24 h-fit sticky top-5 rounded-2xl pt-5'
@@ -42,12 +43,15 @@ export default function LeftBar() {
               rounded-xl flex items-center justify-center'>
               <ThemeToggle />
             </div>
-            <Link href={".."}>
-                <div className='bg-secondary hover:bg-secondary/80 h-[40px] w-[70px]
-                rounded-xl flex items-center justify-center'>
+            <button>
+              <div 
+                className='bg-secondary hover:bg-secondary/80 h-[40px] w-[70px] rounded-xl flex items-center justify-center'
+                onClick={router.back}
+                >
                 <IoArrowBackCircleOutline className='text-secondary-foreground size-6' />
-                </div>
-            </Link>
+              </div>
+            </button>
+
             
           </div>
         </div>
