@@ -13,7 +13,7 @@ export default function LeftBar() {
   
   return <div>
     <motion.div
-    className='md:block w-full md:w-24 h-fit sticky top-5 rounded-2xl pt-5 pl-2'
+    className='md:block w-full md:w-24 h-fit sticky top-5 rounded-2xl pt-5'
     initial={{
       y: 15, 
       opacity: 0
