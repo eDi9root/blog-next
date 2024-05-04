@@ -6,6 +6,7 @@ import LeftBar from "@/components/Left/LeftBar";
 import RightBar from "@/components/Right/RightBar";
 import SessionProvider from "@/components/SessionProvider";
 import { Toaster } from "@/components/ui/toaster";
+import Sleft from "@/components/Sleft/Sleft";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,11 @@ export default function RootLayout({
           >
             <main>
               <div className="max-w-[100rem] mx-auto">
+                  <div className="hidden w-full mt-4 mb-[-20px] max-md:flex justify-center">
+                    <Sleft />
+                  </div>
                 <div className="gap-10 flex md:mt-5 flex-col md:flex-row">
+
                   {children}
                   <RightBar />
                 </div>

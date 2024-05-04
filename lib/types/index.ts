@@ -11,3 +11,13 @@ export type IBlogDetail = {
         created_at: string;
     };
 } | null
+
+export type IBlog = {
+	id: string;
+	title: string;
+	img_url: string;
+	created_at: string;
+	is_comment: boolean;
+	content: string;
+	is_public: boolean;
+};

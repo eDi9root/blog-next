@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import Navlinks from './components/Navlinks'
 import Sleft from '@/components/Sleft/Sleft'
 
 export default function layout({children} : {children:ReactNode}) {
@@ -9,7 +8,6 @@ export default function layout({children} : {children:ReactNode}) {
         <Sleft />
       </div>
       <div className='w-full space-y-4'>
-        <Navlinks />
         {children}
       </div>
       

@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { ThemeToggle } from '../theme.toggle';
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { useRouter } from 'next/navigation';
+import { IoSearch } from "react-icons/io5";
 
 
 
@@ -49,6 +50,13 @@ export default function LeftBar() {
                 onClick={router.back}
                 >
                 <IoArrowBackCircleOutline className='text-secondary-foreground size-6' />
+              </div>
+            </button>
+            <button>
+              <div 
+                className='bg-secondary hover:bg-secondary/80 h-[40px] w-[70px] rounded-xl flex items-center justify-center'
+                >
+                <IoSearch className='text-secondary-foreground size-6' />
               </div>
             </button>
 

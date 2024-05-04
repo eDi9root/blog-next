@@ -16,14 +16,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Switch } from "@/components/ui/switch"
-import { readBlog, updateBlogById } from '@/lib/actions/blog';
+import { readBlogAdmin, updateBlogById } from '@/lib/actions/blog';
 import DeleteAlert from './DeleteAlert';
 import SwitchForm from './SwitchForm';
 import { SchemaType } from '../schema';
 import Link from 'next/link';
 
 export default async function BoardTable() {
-  const { data: blogs } = await readBlog()
+  const { data: blogs } = await readBlogAdmin()
 
   return (
     <div className='border bg-border rounded-md'>
