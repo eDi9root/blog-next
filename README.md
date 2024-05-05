@@ -1,6 +1,15 @@
+<h2 align="center">eDi9root Blog</h2>
 
-
-
+<p align="center">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Vercel/vercel1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/NextJS/nextjs1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Javascript/javascript2.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Supabase/supabase1.svg"><br />
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/TailwindCSS/tailwindcss1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Markdown/markdown1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/TypeScript/typescript1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/npm/npm2.svg">
+</p>
 ## Getting Started
 
 First, run the development server:
