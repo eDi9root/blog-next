@@ -13,6 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
 	metadataBase: new URL("https://edi9root-blog.vercel.app/"),
 
+  icons:{
+    icon:['/favicon.ico?v=4'],
+    apple:['/apple-touch-icon.png?v=4'],
+    shortcut:['apple-touch-icon.png']
+  },
+
 	title: {
 		template: "%s | edi9root blog",
 		default: "edi9root blog",
