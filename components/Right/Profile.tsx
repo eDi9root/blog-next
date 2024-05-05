@@ -7,7 +7,7 @@ import { RxDashboard } from "react-icons/rx";
 import { IoLogOutOutline } from "react-icons/io5";
 import { createBrowserClient } from '@supabase/ssr'
 
-export default function profile() {
+export default function Profile() {
     const user = useUser((state) => state.user)
     const setUser = useUser((state) => state.setUser);
 
