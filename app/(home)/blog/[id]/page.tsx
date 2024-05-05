@@ -4,34 +4,34 @@ import React from 'react'
 import Content from './components/Content';
 
 
-// export async function generateStaticParams() {
-// 	const { data: blogs } = await fetch(
-// 		process.env.SITE_URL + "/api/blog?id=*"
-// 	).then((res) => res.json());
+export async function generateStaticParams() {
+	const { data: blogs } = await fetch(
+		process.env.SITE_URL + "/api/blog?id=*"
+	).then((res) => res.json());
 
-// 	return blogs;
-// }
+	return blogs;
+}
 
-// export async function generateMetadata({ params }: { params: { id: string } }) {
-// 	const { data: blog } = (await fetch(
-// 		process.env.SITE_URL + "/api/blog?id=" + params.id
-// 	).then((res) => res.json())) as { data: IBlog };
+export async function generateMetadata({ params }: { params: { id: string } }) {
+	const { data: blog } = (await fetch(
+		process.env.SITE_URL + "/api/blog?id=" + params.id
+	).then((res) => res.json())) as { data: IBlog };
 
-// 	return {
-// 		title: blog?.title,
-// 		authors: {
-// 			name: "JunseokOh",
-// 		},
-// 		openGraph: {
-// 			title: blog?.title,
-// 			url: "" + params.id,
-// 			siteName: "",
-// 			images: blog?.img_url,
-// 			type: "website",
-// 		},
-// 		keywords: ["Edi9root", "JunseokOh", "Personal Blog"],
-// 	};
-// }
+	return {
+		title: blog?.title,
+		authors: {
+			name: "JunseokOh",
+		},
+		openGraph: {
+			title: blog?.title,
+			url: "" + params.id,
+			siteName: "",
+			images: blog?.img_url,
+			type: "website",
+		},
+		keywords: ["Edi9root", "JunseokOh", "Personal Blog"],
+	};
+}
 
 
 
