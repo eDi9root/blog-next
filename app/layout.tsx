@@ -56,7 +56,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <main>
-              <div className="max-w-[100rem] mx-auto">
+              <div className="max-w-[100rem] mx-auto px-5">
                   <div className="hidden w-full mt-4 mb-[-20px] max-md:flex justify-center">
                     <Sleft />
                   </div>
