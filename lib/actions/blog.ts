@@ -2,7 +2,7 @@
 
 import { SchemaType } from '@/app/dashboard/schema'
 import { createSupabaseServerClient } from '../supabase';
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, unstable_noStore } from 'next/cache'
 import { IBlog } from '../types';
 
 const DASHBOARD = "/dashboard/blog";
@@ -58,8 +58,9 @@ export async function deleteBlogById(blogId: string) {
 export async function updateBlogById(blogId: string, data: IBlog) {
 	const supabase = await createSupabaseServerClient();
 	const result = await supabase.from("blog").update(data).eq("id", blogId);
-		revalidatePath(DASHBOARD);
-		revalidatePath("/blog/" + blogId);
+
+	revalidatePath(DASHBOARD);
+	revalidatePath("/blog/" + blogId);
 	return JSON.stringify(result);
 }
 
@@ -74,6 +75,7 @@ export async function updateBlogDetailById (
 		.from("blog")
 		.update(blog)
 		.eq("id", blogId);
+
 	if (resultBlog.error) {
 		return JSON.stringify(resultBlog);
 	} else {
@@ -81,7 +83,7 @@ export async function updateBlogDetailById (
 			.from("blog_content")
 			.update({ content: data.content })
 			.eq("blog_id", blogId);
-			
+
 		revalidatePath(DASHBOARD);
 		revalidatePath("/blog/" + blogId);
 		return JSON.stringify(result);

@@ -21,6 +21,7 @@ import DeleteAlert from './DeleteAlert';
 import SwitchForm from './SwitchForm';
 import { SchemaType } from '../schema';
 import Link from 'next/link';
+import { IBlog } from '@/lib/types';
 
 export default async function BoardTable() {
   const { data: blogs } = await readBlogAdmin()
@@ -36,8 +37,8 @@ export default async function BoardTable() {
       
       <div>
         {blogs?.map((blog, index) => {
-          const updatedComment = updateBlogById.bind(null, blog.id, {is_comment:!blog.is_comment} as SchemaType)
-          const updatedPublic = updateBlogById.bind(null, blog.id, {is_public:!blog.is_public} as SchemaType)
+          const updatedComment = updateBlogById.bind(null, blog.id, {is_comment:!blog.is_comment} as IBlog)
+          const updatedPublic = updateBlogById.bind(null, blog.id, {is_public:!blog.is_public} as IBlog)
           return (
             <div className='grid grid-cols-5 p-5 items-center' key={index}>
               <h1 className='col-span-2'>{blog.title}</h1>
@@ -64,10 +65,12 @@ const Actions = ({id} : {id:string}) => {
         <TooltipProvider delayDuration={0}>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost2" size="icon" className='gap-x-2'>
-                <FaEye />
-                <span className='sr-only'>View</span>
-              </Button>
+              <Link href={`/blog/${id}`} >
+                <Button variant="ghost2" size="icon" className='gap-x-2'>
+                  <FaEye />
+                  <span className='sr-only'>View</span>
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent>View</TooltipContent>
           </Tooltip>
