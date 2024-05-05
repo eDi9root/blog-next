@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 		},
 		openGraph: {
 			title: blog?.title,
-			url: "" + params.id,
-			siteName: "",
+			url: "https://edi9root-blog.vercel.app/blog" + params.id,
+			siteName: "edi9root-blog",
 			images: blog?.img_url,
 			type: "website",
 		},
