@@ -13,7 +13,7 @@ import { IoSearch } from "react-icons/io5";
 
 export default function LeftBar() {
   const router = useRouter()
-  return <div>
+  return <div className='sticky top-5 z-10'>
     <motion.div
     className='md:block w-full md:w-24 h-fit sticky top-5 rounded-2xl pt-5'
     initial={{
@@ -30,8 +30,8 @@ export default function LeftBar() {
       },
     }}
     >
-      <div className='md:w-24 w-full p-3 border bg-popover border-neutral-800 
-      rounded-2xl h-full'>
+      <div className='md:w-24 w-full p-3 border bg-popover/10 border-neutral-800/10 
+      rounded-2xl h-full backdrop-blur-md'>
         <div className='flex md:flex-col'>
           <div className='flex md:flex-col gap-x-1 w-full h-fit items-center justify-center gap-y-4'>
             <Link href={"/"}>

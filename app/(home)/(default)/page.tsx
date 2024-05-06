@@ -4,6 +4,7 @@ import { readBlog } from '@/lib/actions/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 import Sleft from '@/components/Sleft/Sleft';
+import MarkdownPre from '@/components/markdown/MarkdownPre';
 
 export default async function page() {
   let {data: blogs} = await readBlog()
@@ -11,7 +12,7 @@ export default async function page() {
   return (
     <div className='flex w-full gap-10 flex-col md:flex-row'>
       <LeftBar />
-      <div className="hidden w-full mb-[-20px] max-md:flex justify-center">
+      <div className="hidden w-full mb-[-20px] max-md:flex justify-center sticky top-0">
         <Sleft />
       </div>
 
@@ -51,6 +52,9 @@ export default async function page() {
                       <h1 className='font-bold text-lg'>
                         {blog.title}
                       </h1>
+                      <p className='text-sm'>
+                        {blog.blog_content?.content.slice(0,80)}
+                      </p>
                       <p className='pt-10 text-sm dark:text-gray-400 text-neutral-500 font-semibold'>
                           {new Date(blog.created_at).toDateString()}
                       </p>                     

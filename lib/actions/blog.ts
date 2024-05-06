@@ -34,7 +34,7 @@ export async function readBlog() {
 	const supabase = await createSupabaseServerClient();
 	return supabase
 		.from("blog")
-		.select("*")
+		.select("*, blog_content(content)")
 		.eq("is_public", true)
 		.order("created_at", { ascending: true });
 }
@@ -50,9 +50,9 @@ export async function readBlogAdmin() {
 export async function deleteBlogById(blogId: string) {
 	const supabase = await createSupabaseServerClient();
 	const result = await supabase.from("blog").delete().eq("id", blogId);
-		revalidatePath(DASHBOARD);
-		revalidatePath("/blog/" + blogId);
-		return JSON.stringify(result);
+	revalidatePath(DASHBOARD);
+	revalidatePath("/blog/" + blogId);
+	return JSON.stringify(result);
 }
 
 export async function updateBlogById(blogId: string, data: IBlog) {
