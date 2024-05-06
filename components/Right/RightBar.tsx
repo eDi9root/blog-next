@@ -9,7 +9,7 @@ import Profile from './Profile';
 export default function RightBar() {
   const user = useUser((state) => state.user)
 
-  return <div>
+  return <div className='sticky top-5 h-fit'>
     <motion.div
     className='hidden max-xl:hidden lg:block w-full lg:w-fit'
     initial={{
@@ -27,7 +27,7 @@ export default function RightBar() {
       },
     }}
     >
-    <div className='md:w-60 w-full rounded-2xl h-fit sticky top-5'>
+    <div className='md:w-60 w-full rounded-2xl h-fit'>
       <div>
         <div className='bg-popover min-w-min rounded-2xl p-4 border border-neutral-800 h-fit'>
           

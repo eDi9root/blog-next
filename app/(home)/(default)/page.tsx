@@ -3,6 +3,7 @@ import LeftBar from '@/components/Left/LeftBar';
 import { readBlog } from '@/lib/actions/blog';
 import Link from 'next/link';
 import Image from 'next/image';
+import Sleft from '@/components/Sleft/Sleft';
 
 export default async function page() {
   let {data: blogs} = await readBlog()
@@ -10,10 +11,13 @@ export default async function page() {
   return (
     <div className='flex w-full gap-10 flex-col md:flex-row'>
       <LeftBar />
+      <div className="hidden w-full mb-[-20px] max-md:flex justify-center">
+        <Sleft />
+      </div>
 
       <div className='w-full'>
   
-        <div className='bg-popover lg:bg-transparent rounded-2xl'>
+        <div className='bg-background lg:bg-transparent rounded-2xl'>
           <div>
             <div className='flex gap-x-6 p-4 mt-2'>
               <h1 className='text-2xl'>

@@ -57,9 +57,6 @@ export default function RootLayout({
           >
             <main>
               <div className="max-w-[100rem] mx-auto px-5">
-                  <div className="hidden w-full mt-4 mb-[-20px] max-md:flex justify-center">
-                    <Sleft />
-                  </div>
                 <div className="gap-10 flex md:mt-5 flex-col md:flex-row">
 
                   {children}
