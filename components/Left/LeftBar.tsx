@@ -102,7 +102,7 @@ export default function LeftBar() {
             </div>
             <div className='flex items-center gap-x-1'>
               <span className='text-base'>
-                0 Posts
+                10 Posts
               </span>
             </div>
           </div>

@@ -5,9 +5,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Sleft from '@/components/Sleft/Sleft';
 import MarkdownPre from '@/components/markdown/MarkdownPre';
+import ClientPagination from '@/components/ClientPagination';
 
-export default async function page() {
+export default async function page({
+  searchParams,
+}: {
+  searchParams: {[key: string]: string | string[] | undefined}
+}) {
+  const page = searchParams['page'] ?? '1'
+  const per_page = searchParams['per_page'] ?? '5'
+
+  const start = (Number(page) - 1) * Number(per_page) // 0, 5, 10 ...
+  const end = start + Number(per_page) // 5, 10, 15 ...
+
   let {data: blogs} = await readBlog()
+
+  const entries = blogs?.slice(start, end)
 
   return (
     <div className='flex w-full gap-10 flex-col md:flex-row'>
@@ -32,7 +45,7 @@ export default async function page() {
             <div className="border border-[#5050505b] text-neutral-300 my-6" />
             
             <div className='rounded-lg w-full grid grid-cols-1 space-y-5'>
-              {blogs?.map((blog, index) => {
+              {entries?.map((blog, index) => {
                 return (
                   <Link 
                   key={index}
@@ -60,11 +73,12 @@ export default async function page() {
                       </p>                     
                     </div>
                   </Link>
-                  
                 )
                 
               })}
-              
+              <div className='pb-4'>
+                <ClientPagination />
+              </div>
             </div>
           </div>
         </div> 
