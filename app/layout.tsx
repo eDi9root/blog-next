@@ -35,13 +35,13 @@ export const metadata: Metadata = {
 			"Own Space for writing down thoughts, and sharing information",
 		url: "https://edi9root-blog.vercel.app/",
 		siteName: "edi9root blog",
-		images: "",
+		images: ['./opengraph-image.svg'],
 		type: "website",
 	},
   twitter: {
     card: "summary_large_image",
     title: "Personal Blog",
-    images: "",
+    images: ['./opengraph-image.svg'],
   },
 	keywords: ["Edi9root", "JunseokOh", "Personal Blog"],
 };
