@@ -29,6 +29,15 @@ export default function MarkdownPre({
         h3:({node, ...props}) => {
             return <h3 {...props} className='text-xl font-bold'/>
         },
+		ol: ({ node, ...props }) => {
+            return <ol {...props} className="list-decimal pl-5" />;
+        },
+        ul: ({ node, ...props }) => {
+            return <ul {...props} className="list-disc pl-5" />;
+        },
+        li: ({ node, ...props }) => {
+            return <li {...props} className="mb-2" />;
+        },
         code: ({ node, className, children, ...props }) => {
 			const match = /language-(\w+)/.exec(className || "");
 			const id = (Math.floor(Math.random() * 100) + 1).toString();

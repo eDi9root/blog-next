@@ -4,7 +4,6 @@ import { readBlog } from '@/lib/actions/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 import Sleft from '@/components/Sleft/Sleft';
-import MarkdownPre from '@/components/markdown/MarkdownPre';
 import ClientPagination from '@/components/ClientPagination';
 
 export default async function page({
