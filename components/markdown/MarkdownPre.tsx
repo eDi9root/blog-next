@@ -29,6 +29,12 @@ export default function MarkdownPre({
         h3:({node, ...props}) => {
             return <h3 {...props} className='text-xl font-bold'/>
         },
+		a:({node, ...props}) => {
+            return <a {...props} className='font-medium underline underline-offset-4'/>
+        },
+		p:({node, ...props}) => {
+            return <p {...props} className='leading-7 [&:not(:first-child)]:mt-6'/>
+        },
 		ol: ({ node, ...props }) => {
             return <ol {...props} className="list-decimal pl-5" />;
         },
@@ -37,6 +43,9 @@ export default function MarkdownPre({
         },
         li: ({ node, ...props }) => {
             return <li {...props} className="mb-2" />;
+        },
+		blockquote: ({ node, ...props }) => {
+            return <blockquote {...props} className="mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground" />;
         },
         code: ({ node, className, children, ...props }) => {
 			const match = /language-(\w+)/.exec(className || "");

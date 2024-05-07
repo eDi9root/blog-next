@@ -38,6 +38,11 @@ export const metadata: Metadata = {
 		images: "",
 		type: "website",
 	},
+  twitter: {
+    card: "summary_large_image",
+    title: "Personal Blog",
+    images: "",
+  },
 	keywords: ["Edi9root", "JunseokOh", "Personal Blog"],
 };
 

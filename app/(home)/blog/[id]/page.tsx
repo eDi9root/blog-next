@@ -2,6 +2,7 @@ import { IBlog } from '@/lib/types';
 import Image from 'next/image';
 import React from 'react'
 import Content from './components/Content';
+import { Description } from '@radix-ui/react-toast';
 
 
 export async function generateStaticParams() {
@@ -19,16 +20,24 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
 	return {
 		title: blog?.title,
+    description: blog?.descript,
 		authors: {
 			name: "JunseokOh",
 		},
 		openGraph: {
 			title: blog?.title,
+      Description: blog?.descript,
 			url: "https://edi9root-blog.vercel.app/blog" + params.id,
 			siteName: "edi9root-blog",
 			images: blog?.img_url,
 			type: "website",
 		},
+    twitter: {
+      card: "summary_large_image",
+      title: blog?.title,
+      description: blog?.descript,
+      images: [blog?.img_url],
+    },
 		keywords: ["Edi9root", "JunseokOh", "Personal Blog"],
 	};
 }
