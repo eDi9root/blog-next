@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 			"Own Space for writing down thoughts, and sharing information",
 		url: "https://edi9root-blog.vercel.app/",
 		siteName: "edi9root blog",
-		images: ['./opengraph-image.svg'],
+		images: [`/opengraph-image.svg`],
 		type: "website",
 	},
   twitter: {
