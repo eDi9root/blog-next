@@ -17,6 +17,7 @@ export type Database = {
           is_comment: boolean
           is_public: boolean
           title: string
+          descript: string
         }
         Insert: {
           created_at?: string
@@ -25,6 +26,7 @@ export type Database = {
           is_comment?: boolean
           is_public?: boolean
           title: string
+          descript: string
         }
         Update: {
           created_at?: string
@@ -33,6 +35,7 @@ export type Database = {
           is_comment?: boolean
           is_public?: boolean
           title?: string
+          descript: string
         }
         Relationships: []
       }

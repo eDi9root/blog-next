@@ -34,7 +34,7 @@ export async function readBlog() {
 	const supabase = await createSupabaseServerClient();
 	return supabase
 		.from("blog")
-		.select("*, blog_content(content)")
+		.select("*")
 		.eq("is_public", true)
 		.order("created_at", { ascending: true });
 }

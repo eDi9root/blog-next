@@ -50,6 +50,7 @@ export default function BlogCreate({
       img_url: blog?.img_url || "",
       is_public: blog?.is_public || true,
       is_comment: blog?.is_comment || false,
+      descript: blog?.descript || "",
     },
   })
 
@@ -164,6 +165,8 @@ export default function BlogCreate({
             )}
           />
 
+
+
           <FormField
             control={form.control}
             name="img_url"
@@ -193,11 +196,34 @@ export default function BlogCreate({
                     <FormMessage />
                   </div>
                 }
-                
               </FormItem>
             )}
           />
 
+          <FormField
+            control={form.control}
+            name="descript"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <div className={cn("p-2 w-full flex break-words gap-2", 
+                  isPre? "divide-x-0" : "divide-x")}>
+                    <Input placeholder="descript" {...field} className={cn("border-none text-lg font-medium leading-relaxed", isPre ? "w-0 p-0" : "w-full lg:w-1/2")} />
+                    <div className={cn("lg:px-10", isPre ? "mx-auto w-full lg:w-4/5" : "w-1/2 lg:block hidden")}>
+                      <p className="text-sm italic">{form.getValues().descript}</p>
+                    </div>
+                  </div>
+                </FormControl>
+                {form.getFieldState("descript").invalid && 
+                form.getValues().descript && 
+                <div className="px-2">
+                  <FormMessage />
+                </div>
+                }
+              </FormItem>
+            )}
+          />
+          
           <FormField
             control={form.control}
             name="content"

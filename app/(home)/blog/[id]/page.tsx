@@ -65,6 +65,9 @@ export default async function page({params}: {params: {id: string}}) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
+        <div className='italic text-sm'>
+          {blog?.descript}
+        </div>
         <Content blogId={params.id} />
     </div>
   )

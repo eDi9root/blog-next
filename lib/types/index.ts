@@ -5,6 +5,7 @@ export type IBlogDetail = {
     is_comment: boolean;
     is_public: boolean;
     title: string;
+    descript: string;
     blog_content: {
         blog_id: string;
         content: string;
@@ -20,4 +21,5 @@ export type IBlog = {
 	is_comment: boolean;
 	content: string;
 	is_public: boolean;
+    descript: string;
 };

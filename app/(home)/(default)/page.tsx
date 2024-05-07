@@ -64,8 +64,8 @@ export default async function page({
                       <h1 className='font-bold text-lg'>
                         {blog.title}
                       </h1>
-                      <p className='text-sm'>
-                        {blog.blog_content?.content.slice(0,80)}
+                      <p className='text-sm italic'>
+                        {blog.descript}
                       </p>
                       <p className='pt-10 text-sm dark:text-gray-400 text-neutral-500 font-semibold'>
                           {new Date(blog.created_at).toDateString()}

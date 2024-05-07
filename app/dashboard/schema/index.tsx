@@ -12,6 +12,9 @@ export const BlogFormSchema = z.object({
   }),
   is_public: z.boolean(),
   is_comment: z.boolean(),
+  descript: z.string().min(2, {
+    message: "Description must be at least 2 characters.",
+  })
 }).refine((data)=> {
   const img_url = data.img_url
   try {
