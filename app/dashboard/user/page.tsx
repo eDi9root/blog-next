@@ -1,10 +1,9 @@
 import { readUsers } from "@/lib/actions/user";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 
 export default async function page() {
-	const { data } = await readUsers();
+	const { data: users } = await readUsers();
 
 	return (
 		<div className="rounded-md bg-graident-dark border-[0.5px] overflow-y-scroll ">
@@ -15,7 +14,7 @@ export default async function page() {
 					<h1>Email</h1>
 				</div>
 				<div className="space-y-10 p-5">
-					{data?.map((user, index) => {
+					{users?.map((user, index) => {
 						return (
 							<div
 								className="grid grid-cols-3 grid-flow-dense"
