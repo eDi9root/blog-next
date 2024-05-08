@@ -1,13 +1,32 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 import SupabaseClient from './SupabaseClient';
 import { useUser } from '@/lib/store/user';
 import Profile from './Profile';
+import { readTags } from '@/lib/actions/blog';
+import PostTag from '@/app/dashboard/components/PostTag';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 export default function RightBar() {
   const user = useUser((state) => state.user)
+  const [tags, setTags] = useState<string[]>([]);
+  
+  const readTagsData = async () => {
+    const { data } = await readTags();
+    if (data !== null) {
+      // Extract tags from data
+      const extractedTags = data.map(item => item.tags);
+      // Filter out duplicates
+      const uniqueTags = Array.from(new Set(extractedTags));
+      setTags(uniqueTags);
+    }
+  };
+
+  useEffect(() => {
+    readTagsData()
+}, [])
 
   return <div className='sticky top-5 h-fit'>
     <motion.div
@@ -53,10 +72,17 @@ export default function RightBar() {
 
           <div className="border border-[#5050505b] text-neutral-300 my-5" />
 
+          <div className='col-span-12 row-start-3 h-fit'>
+            <h1 className='font-bold pb-4'>Tags</h1>
+            <div className='flex flex-wrap gap-2'>
+              {tags.map((tag, index) => (
+                  <PostTag tags={tag} key={index} option={1} />
+                ))}
+            </div>
+          </div>
 
           <div className="border border-[#5050505b] text-neutral-300 my-5" />
 
-      
         </div>
       </div>
     </div>

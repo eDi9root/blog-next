@@ -59,7 +59,6 @@ export default function LeftBar() {
                 <IoSearch className='text-secondary-foreground size-6' />
               </div>
             </button>
-
             
           </div>
         </div>

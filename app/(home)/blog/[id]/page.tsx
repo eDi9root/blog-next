@@ -66,7 +66,7 @@ export default async function page({params}: {params: {id: string}}) {
                 {new Date(blog?.created_at!).toDateString()}
               </div>
               <div>
-                <PostTag tags={blog.tags} />
+                <PostTag tags={blog.tags} option={1} />
               </div>
             </div>
         </div>

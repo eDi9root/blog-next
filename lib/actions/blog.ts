@@ -39,6 +39,15 @@ export async function readBlog() {
 		.order("created_at", { ascending: true });
 }
 
+export async function readTags() {
+	const supabase = await createSupabaseServerClient();
+	return supabase
+		.from("blog")
+		.select("tags")
+		.eq("is_public", true)
+		.order("created_at", { ascending: true });
+}
+
 export async function readBlogAdmin() {
 	const supabase = await createSupabaseServerClient();
 	return supabase

@@ -68,9 +68,9 @@ export default async function page({
                       <p className='text-sm italic'>
                         {blog.descript}
                       </p>                      
-                      <p className='py-2 text-sm'>
-                        {/* <PostTag tags={blog.tags} /> */}
-                      </p>
+                      <div className='py-2 text-sm'>
+                        <PostTag tags={blog.tags} option={0} />
+                      </div>
                       <div className='flex justify-end items-center'>
                         <p className='pt-2 text-sm dark:text-gray-400 text-neutral-500 font-semibold'>
                             {new Date(blog.created_at).toDateString()}
