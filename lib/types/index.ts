@@ -25,3 +25,12 @@ export type IBlog = {
     descript: string;
     tags: string;
 };
+
+export type Iuser = {
+	created_at: string;
+	display_name: string;
+	email: string;
+	id: string;
+	image_url: string;
+	role: string;
+} | null;
