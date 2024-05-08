@@ -13,7 +13,7 @@ export async function createSupabaseServerClient() {
         {
             cookies: {
                 get(name: string) {
-                return cookieStore.get(name)?.value
+                    return cookieStore.get(name)?.value
                 },
             },
         }

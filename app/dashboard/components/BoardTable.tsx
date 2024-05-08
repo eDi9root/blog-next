@@ -15,11 +15,9 @@ import {
   AlertDialog,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Switch } from "@/components/ui/switch"
 import { readBlogAdmin, updateBlogById } from '@/lib/actions/blog';
 import DeleteAlert from './DeleteAlert';
 import SwitchForm from './SwitchForm';
-import { SchemaType } from '../schema';
 import Link from 'next/link';
 import { IBlog } from '@/lib/types';
 

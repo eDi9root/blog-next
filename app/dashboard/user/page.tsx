@@ -6,8 +6,8 @@ export default async function page() {
 	const { data: users } = await readUsers();
 
 	return (
-		<div className="rounded-md bg-graident-dark border-[0.5px] overflow-y-scroll ">
-			<div className="w-[900px] md:w-full">
+		<div className="rounded-md bg-popover border-[2px] overflow-y-scroll">
+			<div className="w-full md:w-full">
 				<div className="grid grid-cols-3 border-b p-5 dark:text-gray-500">
 					<h1>Name</h1>
 					<h1>Role</h1>
@@ -46,3 +46,4 @@ export default async function page() {
 		</div>
 	);
 }
+
