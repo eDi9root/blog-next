@@ -1,24 +1,10 @@
 import { readUsers } from "@/lib/actions/user";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import { cn } from "@/lib/utils";
->>>>>>> b24a877 (updated: user)
-=======
->>>>>>> 9a1e6ca (revert)
 import Image from "next/image";
 import React from "react";
 
 export default async function page() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	const { data: users } = await readUsers();
-=======
 	const { data } = await readUsers();
->>>>>>> b24a877 (updated: user)
-=======
-	const { data: users } = await readUsers();
->>>>>>> 9a1e6ca (revert)
 
 	return (
 		<div className="rounded-md bg-graident-dark border-[0.5px] overflow-y-scroll ">
@@ -29,15 +15,7 @@ export default async function page() {
 					<h1>Email</h1>
 				</div>
 				<div className="space-y-10 p-5">
-<<<<<<< HEAD
-<<<<<<< HEAD
-					{users?.map((user, index) => {
-=======
 					{data?.map((user, index) => {
->>>>>>> b24a877 (updated: user)
-=======
-					{users?.map((user, index) => {
->>>>>>> 9a1e6ca (revert)
 						return (
 							<div
 								className="grid grid-cols-3 grid-flow-dense"
@@ -55,9 +33,8 @@ export default async function page() {
 								</div>
 
 								<div className="flex items-center">
-									<h1>{user.role}</h1>
+									<h1>{user.role}
 								</div>
-
 								<div className="flex items-center">
 									<h1>{user.email}</h1>
 								</div>
@@ -69,3 +46,19 @@ export default async function page() {
 		</div>
 	);
 }
+const SubscriptionStatus = ({ status }: { status: boolean }) => {
+	return (
+		<div className="flex items-center">
+			<span
+				className={cn(
+					" dark:bg-zinc-800 px-2 py-1 rounded-full shadow capitalize  border-[.5px] text-sm",
+					status
+						? "border-green-500 text-green-600 bg-green-200"
+						: "border-zinc-300 dark:text-red-400 dark:border-yellow-700 px-4 bg-red-50"
+				)}
+			>
+				{status ? "Active" : "Inactive"}
+			</span>
+		</div>
+	);
+};
