@@ -1,9 +1,17 @@
 import { readUsers } from "@/lib/actions/user";
+<<<<<<< HEAD
+=======
+import { cn } from "@/lib/utils";
+>>>>>>> b24a877 (updated: user)
 import Image from "next/image";
 import React from "react";
 
 export default async function page() {
+<<<<<<< HEAD
 	const { data: users } = await readUsers();
+=======
+	const { data } = await readUsers();
+>>>>>>> b24a877 (updated: user)
 
 	return (
 		<div className="rounded-md bg-graident-dark border-[0.5px] overflow-y-scroll ">
@@ -14,7 +22,11 @@ export default async function page() {
 					<h1>Email</h1>
 				</div>
 				<div className="space-y-10 p-5">
+<<<<<<< HEAD
 					{users?.map((user, index) => {
+=======
+					{data?.map((user, index) => {
+>>>>>>> b24a877 (updated: user)
 						return (
 							<div
 								className="grid grid-cols-3 grid-flow-dense"
