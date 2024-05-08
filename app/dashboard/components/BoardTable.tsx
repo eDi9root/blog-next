@@ -45,9 +45,6 @@ export default async function BoardTable() {
               <SwitchForm checked={blog.is_comment} name="comment" onSubmit={updatedComment} />
               <SwitchForm checked={blog.is_public} name="public" onSubmit={updatedPublic} />
               <Actions id={blog.id} />
-
-                  
-              
             </div>
           )
         })}
