@@ -1,10 +1,9 @@
 import { readUsers } from "@/lib/actions/user";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 
 export default async function page() {
-	const { data } = await readUsers();
+	const { data: users } = await readUsers();
 
 	return (
 		<div className="rounded-md bg-graident-dark border-[0.5px] overflow-y-scroll ">
@@ -15,7 +14,7 @@ export default async function page() {
 					<h1>Email</h1>
 				</div>
 				<div className="space-y-10 p-5">
-					{data?.map((user, index) => {
+					{users?.map((user, index) => {
 						return (
 							<div
 								className="grid grid-cols-3 grid-flow-dense"
@@ -33,8 +32,9 @@ export default async function page() {
 								</div>
 
 								<div className="flex items-center">
-									<h1>{user.role}
+									<h1>{user.role}</h1>
 								</div>
+
 								<div className="flex items-center">
 									<h1>{user.email}</h1>
 								</div>
@@ -46,19 +46,3 @@ export default async function page() {
 		</div>
 	);
 }
-const SubscriptionStatus = ({ status }: { status: boolean }) => {
-	return (
-		<div className="flex items-center">
-			<span
-				className={cn(
-					" dark:bg-zinc-800 px-2 py-1 rounded-full shadow capitalize  border-[.5px] text-sm",
-					status
-						? "border-green-500 text-green-600 bg-green-200"
-						: "border-zinc-300 dark:text-red-400 dark:border-yellow-700 px-4 bg-red-50"
-				)}
-			>
-				{status ? "Active" : "Inactive"}
-			</span>
-		</div>
-	);
-};

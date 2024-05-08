@@ -11,7 +11,7 @@ export default function Profile() {
     const user = useUser((state) => state.user)
     const setUser = useUser((state) => state.setUser);
 
-    const isAdmin = user?.role === "admin";
+    const isAdmin = user?.user_metadata?.role === "admin"
 
     const supabase = createBrowserClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -20,23 +20,23 @@ export default function Profile() {
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
-		setUser(null);
+		setUser(undefined);
     }
 
     return <div>
         <div className='flex gap-3 my-4'>
             <div>
                 <Image 
-                    src={user?.image_url!}
-                    alt={user?.display_name!}
+                    src={user?.user_metadata.avatar_url} 
+                    alt={user?.user_metadata.user_name} 
                     width={45}
                     height={45}
                     className='rounded-full ring-2 ring-green-950 hover:ring-green-500'
                 /> 
             </div>
             <div>
-                <p className="text-sm">{user?.display_name}</p>
-                <p className="text-sm text-muted-foreground">{user?.email}</p>
+                <p className="text-sm">{user?.user_metadata?.user_name}</p>
+                <p className="text-sm text-muted-foreground">{user?.user_metadata?.email}</p>
             </div>
         </div>
         <div className='w-full mt-5'>
