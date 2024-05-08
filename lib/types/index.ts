@@ -6,6 +6,7 @@ export type IBlogDetail = {
     is_public: boolean;
     title: string;
     descript: string;
+    tags: string;
     blog_content: {
         blog_id: string;
         content: string;
@@ -22,4 +23,5 @@ export type IBlog = {
 	content: string;
 	is_public: boolean;
     descript: string;
+    tags: string;
 };

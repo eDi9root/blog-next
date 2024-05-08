@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { string, z } from "zod"
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button"
@@ -51,6 +51,7 @@ export default function BlogCreate({
       is_public: blog?.is_public || true,
       is_comment: blog?.is_comment || false,
       descript: blog?.descript || "",
+      tags: blog?.tags || "",
     },
   })
 
@@ -215,6 +216,29 @@ export default function BlogCreate({
                   </div>
                 </FormControl>
                 {form.getFieldState("descript").invalid && 
+                form.getValues().descript && 
+                <div className="px-2">
+                  <FormMessage />
+                </div>
+                }
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="tags"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <div className={cn("p-2 w-full flex break-words gap-2", 
+                  isPre? "divide-x-0" : "divide-x")}>
+                    <Input placeholder="tags" {...field} className={cn("border-none text-lg font-medium leading-relaxed", isPre ? "w-0 p-0" : "w-full lg:w-1/2")} />
+                    <div className={cn("lg:px-10", isPre ? "mx-auto w-full lg:w-4/5" : "w-1/2 lg:block hidden")}>
+                      <p className="text-medium font-bold text-primary border rounded-md">{form.getValues().tags}</p>
+                    </div>
+                  </div>
+                </FormControl>
+                {form.getFieldState("tags").invalid && 
                 form.getValues().descript && 
                 <div className="px-2">
                   <FormMessage />

@@ -12,6 +12,9 @@ export const BlogFormSchema = z.object({
   }),
   is_public: z.boolean(),
   is_comment: z.boolean(),
+  tags: z.string().min(2, {
+    message: "Form must be with ',' each tags ",
+  }),
   descript: z.string().min(2, {
     message: "Description must be at least 2 characters.",
   })

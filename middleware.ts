@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
         remove(name: string, options: CookieOptions) {
           request.cookies.set({
             name,
-            value: '',
+            value: "",
             ...options,
           })
           response = NextResponse.next({
@@ -46,13 +46,15 @@ export async function middleware(request: NextRequest) {
           })
           response.cookies.set({
             name,
-            value: '',
+            value: "",
             ...options,
           })
         },
       },
     }
   )
+
+  await supabase.auth.getSession()
 
   const {data} = await supabase.auth.getSession()
 

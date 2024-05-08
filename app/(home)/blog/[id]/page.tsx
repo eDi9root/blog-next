@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react'
 import Content from './components/Content';
 import { Description } from '@radix-ui/react-toast';
+import PostTag from '@/app/dashboard/components/PostTag';
 
 
 export async function generateStaticParams() {
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 	return {
 		title: blog?.title,
     description: blog?.descript,
+    tags: blog?.tags,
 		authors: {
 			name: "JunseokOh",
 		},
@@ -59,9 +61,14 @@ export default async function page({params}: {params: {id: string}}) {
             <h1 className='text-3xl font-bold dark:text-gray-200'>
                 {blog?.title}
             </h1>
-            <p className='text-sm text-muted-foreground'>
-              {new Date(blog?.created_at!).toDateString()}
-            </p>
+            <div className='flex items-center justify-between'>
+              <div className='text-sm text-muted-foreground'>
+                {new Date(blog?.created_at!).toDateString()}
+              </div>
+              <div>
+                <PostTag tags={blog.tags} />
+              </div>
+            </div>
         </div>
         <div className="border border-[#5050505b] text-neutral-300 my-6" />
         <div className='w-full h-72 relative'>

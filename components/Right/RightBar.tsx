@@ -53,11 +53,6 @@ export default function RightBar() {
 
           <div className="border border-[#5050505b] text-neutral-300 my-5" />
 
-          <div>
-            <h1 className='font-semibold'>
-              Tags
-            </h1>
-          </div>
 
           <div className="border border-[#5050505b] text-neutral-300 my-5" />
 

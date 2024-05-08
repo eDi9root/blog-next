@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Sleft from '@/components/Sleft/Sleft';
 import ClientPagination from '@/components/ClientPagination';
+import PostTag from '@/app/dashboard/components/PostTag';
 
 export default async function page({
   searchParams,
@@ -60,16 +61,21 @@ export default async function page({
                       height={1000}
                       />
                     </div>
-                    <div className='ml-4 space-y-2'>
+                    <div className='ml-4 space-y-2 w-5/6 pt-6'>
                       <h1 className='font-bold text-lg'>
                         {blog.title}
                       </h1>
                       <p className='text-sm italic'>
                         {blog.descript}
+                      </p>                      
+                      <p className='py-2 text-sm'>
+                        {/* <PostTag tags={blog.tags} /> */}
                       </p>
-                      <p className='pt-10 text-sm dark:text-gray-400 text-neutral-500 font-semibold'>
-                          {new Date(blog.created_at).toDateString()}
-                      </p>                     
+                      <div className='flex justify-end items-center'>
+                        <p className='pt-2 text-sm dark:text-gray-400 text-neutral-500 font-semibold'>
+                            {new Date(blog.created_at).toDateString()}
+                        </p>  
+                      </div>                   
                     </div>
                   </Link>
                 )
