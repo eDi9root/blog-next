@@ -65,7 +65,7 @@ export default async function page({params}: {params: {id: string}}) {
               <div className='text-sm text-muted-foreground'>
                 {new Date(blog?.created_at!).toDateString()}
               </div>
-              <div>
+              <div className='flex flex-wrap gap-2'>
                 <PostTag tags={blog.tags} option={1} />
               </div>
             </div>
