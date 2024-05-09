@@ -53,6 +53,7 @@ export async function readTagsbytag(tag: string) {
 	return supabase
 		.from("blog")
 		.select("*")
+		.eq("is_public", true)
 		.textSearch('tags', tag)
 		.order("created_at", { ascending: true });
 }
@@ -115,4 +116,14 @@ export async function readBlogContentById(blogId: string) {
 			.select("*,blog_content(*)")
 			.eq("id", blogId)
 			.single();
+}
+
+export async function Search(data: string) {
+	const supabase = await createSupabaseServerClient();
+	return supabase
+		.from("blog")
+		.select("*")
+		.eq("is_public", true)
+		.textSearch('combined_search_column', data)
+		.order("created_at", { ascending: true });
 }

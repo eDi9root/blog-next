@@ -6,16 +6,30 @@ import React, { useState } from 'react'
 import { PiHouseLight } from "react-icons/pi";
 import { SiGnubash } from "react-icons/si";
 import { MdOutlineLibraryBooks } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
 
 import { motion } from "framer-motion"
 import { Button } from '../ui/button';
 import TooltipHover from '../TooltipHover/TooltipHover';
 import { ThemeToggle } from '../theme.toggle';
 import { Input } from '../ui/input';
+import { useRouter } from 'next/navigation';
 
 
 export default function LeftBar() {
   const [open, setOpen] = useState<boolean>(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const router = useRouter()
+
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault()
+    const encoded = encodeURI(searchQuery)
+    if (encoded.trim() === '') {
+      router.push('/')
+    } else {
+      router.push(`/search/${encoded}`)
+    }
+  }
 
   
   return <div>
@@ -78,9 +92,16 @@ export default function LeftBar() {
           </div>
         </div>
 
-        <div className='hidden justify-between w-full max-w-sm items-center space-x-2 md:flex h-9'>
-          <Input type='Content or Tags' placeholder='Content or Tags' />
-          <Button size='custom2' variant='secondary' type='submit'>Search</Button>
+        <div className='hidden justify-center w-full items-center space-x-4 md:flex h-9'>
+           <FaSearch className='size-6' />
+           <form className='w-full' onSubmit={handleSearch}>
+              <Input 
+                type='Search Posts' 
+                placeholder='Search Posts'
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)} 
+              />
+          </form>
         </div>
 
         <div className="border border-[#5050505b] text-neutral-300 my-6" />
