@@ -26,7 +26,7 @@ export default function RightBar() {
 
   useEffect(() => {
     readTagsData()
-}, [])
+  }, [])
 
   return <div className='sticky top-5 h-fit'>
     <motion.div

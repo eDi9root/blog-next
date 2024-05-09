@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { PiHouseLight } from "react-icons/pi";
 import { SiGnubash } from "react-icons/si";
@@ -9,17 +9,32 @@ import { MdOutlineLibraryBooks } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 
 import { motion } from "framer-motion"
-import { Button } from '../ui/button';
 import TooltipHover from '../TooltipHover/TooltipHover';
 import { ThemeToggle } from '../theme.toggle';
 import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
+import { readBlogId } from '@/lib/actions/blog';
 
 
 export default function LeftBar() {
   const [open, setOpen] = useState<boolean>(false)
   const [searchQuery, setSearchQuery] = useState("")
   const router = useRouter()
+  
+  const [blog, setBlog] = useState<{
+      id: string;
+  }[] | null>()
+  
+  const CalcLen = async () => {
+    const { data } = await readBlogId();
+    setBlog(data)
+  };
+
+  useEffect(() => {
+    CalcLen()
+  }, [])
+
+  const len = blog?.length
 
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault()
@@ -123,7 +138,7 @@ export default function LeftBar() {
             </div>
             <div className='flex items-center gap-x-1'>
               <span className='text-base'>
-                10 Posts
+                {len} Posts
               </span>
             </div>
           </div>
