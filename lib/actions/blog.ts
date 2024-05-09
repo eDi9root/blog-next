@@ -48,6 +48,15 @@ export async function readTags() {
 		.order("created_at", { ascending: true });
 }
 
+export async function readTagsbytag(tag: string) {
+	const supabase = await createSupabaseServerClient();
+	return supabase
+		.from("blog")
+		.select("*")
+		.textSearch('tags', tag)
+		.order("created_at", { ascending: true });
+}
+
 export async function readBlogAdmin() {
 	const supabase = await createSupabaseServerClient();
 	return supabase

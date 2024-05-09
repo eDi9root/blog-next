@@ -30,7 +30,7 @@ export default function RightBar() {
 
   return <div className='sticky top-5 h-fit'>
     <motion.div
-    className='hidden max-xl:hidden lg:block w-full lg:w-fit'
+    className={`lg:block w-full lg:w-fit`}
     initial={{
       y: 15, 
       opacity: 0

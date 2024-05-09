@@ -1,6 +1,6 @@
 import React from 'react'
 import LeftBar from '@/components/Left/LeftBar';
-import { readBlog } from '@/lib/actions/blog';
+import { readBlog, readTagsbytag } from '@/lib/actions/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 import Sleft from '@/components/Sleft/Sleft';
@@ -8,19 +8,13 @@ import ClientPagination from '@/components/ClientPagination';
 import PostTag from '@/app/dashboard/components/PostTag';
 
 export default async function page({
-  searchParams,
+  params,
 }: {
-  searchParams: {[key: string]: string | string[] | undefined}
+  params: {tag: string}
 }) {
-  const page = searchParams['page'] ?? '1'
-  const per_page = searchParams['per_page'] ?? '5'
 
-  const start = (Number(page) - 1) * Number(per_page) // 0, 5, 10 ...
-  const end = start + Number(per_page) // 5, 10, 15 ...
-
-  let {data: blogs} = await readBlog()
-
-  const entries = blogs?.slice(start, end)
+  let {data: blogs} = await readTagsbytag(params.tag)
+  const len = blogs?.length
 
   return (
     <div className='flex w-full gap-10 flex-col md:flex-row'>
@@ -33,19 +27,18 @@ export default async function page({
   
         <div className='bg-background lg:bg-transparent rounded-2xl'>
           <div>
-            <div className='flex gap-x-6 p-4 mt-2'>
-              <h1 className='text-2xl'>
-                Dev Blog
+            <div className='flex items-center justify-center gap-x-6 p-4 mt-4'>
+              <h1 className='text-3xl font-extrabold'>
+                {params.tag}
               </h1>
-              <p className='text-muted-foreground max-w-sm text-sm'>
-                Own Space for writing down thoughts, and sharing information
-              </p>
             </div>
-
+            <div className='text-xl font-bold flex items-center justify-center pt-2 text-primary/80'>
+              Total {len} Postings
+            </div>
             <div className="border border-[#5050505b] text-neutral-300 my-6" />
             
             <div className='rounded-lg w-full grid grid-cols-1 space-y-5'>
-              {entries?.map((blog, index) => {
+              {blogs?.map((blog, index) => {
                 return (
                   <Link 
                   key={index}
@@ -81,9 +74,6 @@ export default async function page({
                 )
                 
               })}
-              <div className='pb-4'>
-                <ClientPagination />
-              </div>
             </div>
           </div>
         </div> 
