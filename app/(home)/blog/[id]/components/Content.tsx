@@ -5,6 +5,8 @@ import { Database } from '@/lib/types/supabase';
 import { createBrowserClient } from '@supabase/ssr';
 import React, { useEffect, useState } from 'react'
 import Loading from './Loading';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
 
 export default function Content({ blogId }: { blogId: string }) {
     const [loading, setLoading] = useState(true);
@@ -41,6 +43,21 @@ export default function Content({ blogId }: { blogId: string }) {
     }
 
   return (
-    <MarkdownPre content={blog?.content || ""} />
+    <div>
+        <MarkdownPre content={blog?.content || ""} />
+        <div className='flex justify-center items-center w-full py-5'>
+            <h1 className='text-3xl'>Comment</h1>
+        </div>
+        <form>
+            <Textarea className='min-h-20' placeholder="Type your comment here" />
+            <div className='flex justify-end pt-5'>
+                <Button>Post</Button>
+            </div>
+        </form>
+        
+        <div>
+
+        </div>
+    </div>
   )
 }

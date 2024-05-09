@@ -12,6 +12,7 @@ export default function Profile() {
     const setUser = useUser((state) => state.setUser);
 
     const isAdmin = user?.user_metadata?.role === "admin"
+    const isUser = user?.user_metadata?.role === "user"
 
     const supabase = createBrowserClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -42,6 +43,15 @@ export default function Profile() {
         <div className='w-full mt-5'>
             {isAdmin && (
                 <Link href='/dashboard' className='block'>
+                    <Button variant="secondary" size="custom3">
+                        <RxDashboard />Dashboard
+                    </Button>
+                </Link>
+            )}
+        </div>
+        <div className='w-full mt-5'>
+            {isUser && (
+                <Link href='/profile' className='block'>
                     <Button variant="secondary" size="custom3">
                         <RxDashboard />Dashboard
                     </Button>

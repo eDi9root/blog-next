@@ -7,6 +7,7 @@ export async function middleware(request: NextRequest) {
       headers: request.headers,
     },
   })
+  const {pathname} = request.nextUrl
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -57,6 +58,7 @@ export async function middleware(request: NextRequest) {
   await supabase.auth.getSession()
 
   const {data} = await supabase.auth.getSession()
+  const { searchParams } = new URL(request.url)
 
 	if (data.session) {
 		if (
@@ -64,12 +66,16 @@ export async function middleware(request: NextRequest) {
 			data.session.user.user_metadata.role !== "admin"
 		) {
 			return NextResponse.redirect(new URL("/", request.url));
-		}
-	} else {
-		return NextResponse.redirect(new URL("/", request.url));
-	}
-
+		} else if (pathname.startsWith("/profile")) {
+        if(searchParams.get("id") !== data.session.user.id) {
+          return NextResponse.redirect(new URL("/", request.url));
+        }
+    } 
+  } else {
+      return NextResponse.redirect(new URL("/", request.url));
+  }
 }
+
 
 export const config = {
 	matcher: ["/dashboard/:path*"],
