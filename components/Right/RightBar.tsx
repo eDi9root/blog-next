@@ -11,13 +11,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 export default function RightBar() {
   const user = useUser((state) => state.user)
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>();
   
   const readTagsData = async () => {
     const { data } = await readTags();
     if (data !== null) {
       // Extract tags from data
-      const extractedTags = data.map(item => item.tags);
+      const extractedTags = data.map(item => item.tags).filter(tag => tag !== null) as string[];
       // Filter out duplicates
       const uniqueTags = Array.from(new Set(extractedTags));
       setTags(uniqueTags);
@@ -75,7 +75,7 @@ export default function RightBar() {
           <div className='col-span-12 row-start-3 h-fit'>
             <h1 className='font-bold pb-4'>Tags</h1>
             <div className='flex flex-wrap gap-2'>
-              {tags.map((tag, index) => (
+              {tags?.map((tag, index) => (
                   <PostTag tags={tag} key={index} option={1} />
                 ))}
             </div>

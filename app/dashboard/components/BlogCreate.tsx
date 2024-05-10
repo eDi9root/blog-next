@@ -27,7 +27,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import MarkdownPre from "@/components/markdown/MarkdownPre";
-import { BlogFormSchema, SchemaType } from "../schema";
+import { BlogFormSchema, SchemaType } from "../schema/index";
 import { IBlogDetail } from "@/lib/types";
 
 

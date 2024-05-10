@@ -25,3 +25,28 @@ export type IBlog = {
     descript: string;
     tags: string;
 };
+
+export type IBlogDetailComment = {
+    created_at: string;
+    id: string;
+    img_url: string;
+    is_comment: boolean;
+    is_public: boolean;
+    title: string;
+    descript: string;
+    tags: string;
+    blog_content: {
+        blog_id: string;
+        content: string;
+        created_at: string;
+    };
+    comment: {
+        id: string;
+        created_at: string;
+        display_name: string;
+        descript: string;
+        post: string;
+        email: string;
+        uid: string;
+    };
+} | null

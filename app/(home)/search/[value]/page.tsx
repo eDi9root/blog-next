@@ -62,7 +62,7 @@ export default async function page({
                         {blog.descript}
                       </p>                      
                       <div className='py-2 text-sm'>
-                        <PostTag tags={blog.tags} option={0} />
+                        <PostTag tags={blog.tags!} option={0} />
                       </div>
                       <div className='flex justify-end items-center'>
                         <p className='pt-2 text-sm dark:text-gray-400 text-neutral-500 font-semibold'>

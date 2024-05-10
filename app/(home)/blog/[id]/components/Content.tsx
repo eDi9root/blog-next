@@ -45,19 +45,6 @@ export default function Content({ blogId }: { blogId: string }) {
   return (
     <div>
         <MarkdownPre content={blog?.content || ""} />
-        <div className='flex justify-center items-center w-full py-5'>
-            <h1 className='text-3xl'>Comment</h1>
-        </div>
-        <form>
-            <Textarea className='min-h-20' placeholder="Type your comment here" />
-            <div className='flex justify-end pt-5'>
-                <Button>Post</Button>
-            </div>
-        </form>
-        
-        <div>
-
-        </div>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { SchemaType } from '@/app/dashboard/schema'
 import { createSupabaseServerClient } from '../supabase';
 import { revalidatePath, unstable_noStore } from 'next/cache'
 import { IBlog } from '../types';
+import { SchemaTypeC } from '@/app/dashboard/schema/indexComment';
 
 const DASHBOARD = "/dashboard/blog";
 
@@ -27,6 +28,23 @@ export async function createBlog (data: SchemaType) {
 
       revalidatePath(DASHBOARD);
       return JSON.stringify(result);
+  }
+}
+
+export async function createComment (blogId: string, data: SchemaTypeC,) {
+    const {...comment} = data
+
+    const supabase = await createSupabaseServerClient();
+    const commentResult = await supabase
+      .from("comment")
+      .insert(comment)
+      .eq("id", blogId)
+
+    if (commentResult.error?.message && !commentResult.data) {
+      return JSON.stringify(commentResult);
+    } else {
+      revalidatePath("/blog/" + data.post);
+      return JSON.stringify(commentResult);
   }
 }
 
@@ -123,6 +141,15 @@ export async function readBlogContentById(blogId: string) {
 	return await supabase
 			.from("blog")
 			.select("*,blog_content(*)")
+			.eq("id", blogId)
+			.single();
+}
+
+export async function ReadComment(blogId: string) {
+	const supabase = await createSupabaseServerClient();
+	return await supabase
+			.from("blog")
+			.select("*,blog_content(*),comment(*)")
 			.eq("id", blogId)
 			.single();
 }

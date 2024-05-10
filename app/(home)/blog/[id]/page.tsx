@@ -1,10 +1,12 @@
-import { IBlog } from '@/lib/types';
+import { IBlog, IBlogDetailComment } from '@/lib/types';
 import Image from 'next/image';
 import React from 'react'
 import Content from './components/Content';
 import { Description } from '@radix-ui/react-toast';
 import PostTag from '@/app/dashboard/components/PostTag';
-
+import { ReadComment } from '@/lib/actions/blog';
+import Comment from '@/app/dashboard/components/Comment';
+import CommentUtil from '@/app/dashboard/components/CommentUtil';
 
 export async function generateStaticParams() {
 	const { data: blogs } = await fetch(
@@ -49,8 +51,10 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 export default async function page({params}: {params: {id: string}}) {
 	const { data: blog } = (await fetch(
 		process.env.SITE_URL + "/api/blog?id=" + params.id
-	).then((res) => res.json())) as {data: IBlog};    
+	).then((res) => res.json())) as {data: IBlog};
 
+  const { data: comment } = await ReadComment(params.id)
+  
   if (!blog?.id) {
     return <h1>Not found</h1>
   }
@@ -85,6 +89,7 @@ export default async function page({params}: {params: {id: string}}) {
           {blog?.descript}
         </div>
         <Content blogId={params.id} />
+        <CommentUtil comment={comment as IBlogDetailComment} />
     </div>
   )
 }

@@ -12,33 +12,34 @@ export type Database = {
       blog: {
         Row: {
           created_at: string
+          descript: string
           id: string
           img_url: string
           is_comment: boolean
           is_public: boolean
+          tags: string | null
           title: string
-          descript: string
-          tags: string
+          combined_search_column: string | null
         }
         Insert: {
           created_at?: string
+          descript?: string
           id?: string
           img_url: string
           is_comment?: boolean
           is_public?: boolean
+          tags?: string | null
           title: string
-          descript: string
-          tags: string
         }
         Update: {
           created_at?: string
+          descript?: string
           id?: string
           img_url?: string
           is_comment?: boolean
           is_public?: boolean
+          tags?: string | null
           title?: string
-          descript: string
-          tags: string
         }
         Relationships: []
       }
@@ -64,6 +65,51 @@ export type Database = {
             columns: ["blog_id"]
             isOneToOne: true
             referencedRelation: "blog"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      comment: {
+        Row: {
+          created_at: string
+          descript: string
+          display_name: string
+          email: string | null
+          id: string
+          post: string
+          uid: string
+        }
+        Insert: {
+          created_at?: string
+          descript: string
+          display_name: string
+          email?: string | null
+          id?: string
+          post: string
+          uid: string
+        }
+        Update: {
+          created_at?: string
+          descript?: string
+          display_name?: string
+          email?: string | null
+          id?: string
+          post?: string
+          uid?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comment_post_fkey"
+            columns: ["post"]
+            isOneToOne: false
+            referencedRelation: "blog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comment_uid_fkey"
+            columns: ["uid"]
+            isOneToOne: false
+            referencedRelation: "users"
             referencedColumns: ["id"]
           },
         ]
@@ -100,7 +146,28 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      combined_search_column: {
+        Args: {
+          "": unknown
+        }
+        Returns: string
+      }
+      is_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      is_comment: {
+        Args: {
+          blog_id: string
+        }
+        Returns: boolean
+      }
+      is_public: {
+        Args: {
+          blog_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
