@@ -14,6 +14,7 @@ export type IBlogDetail = {
     };
 } | null
 
+
 export type IBlog = {
 	id: string;
 	title: string;
@@ -47,6 +48,14 @@ export type IBlogDetailComment = {
         descript: string;
         post: string;
         email: string;
-        uid: string;
+        url: string;
     };
+    user: {
+        id: string;
+        created_at: string;
+        email: string;
+        display_name: string;
+        image_url: string;
+        role: string;
+    }
 } | null

@@ -4,17 +4,16 @@ import Comment from '@/app/dashboard/components/Comment'
 import { SchemaTypeC } from '@/app/dashboard/schema/indexComment';
 import { toast } from '@/components/ui/use-toast';
 import { createComment } from '@/lib/actions/blog';
-import { IBlogDetailComment } from '@/lib/types'
 import { PostgrestSingleResponse } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
-export default function CommentUtil({comment}: {comment:IBlogDetailComment}) {
+export default function CommentUtil({blogId}: {blogId: string}) {
     const router = useRouter();
 
     const OnHandle = async (data: SchemaTypeC) => {
 
-		const result = JSON.parse(await createComment(comment?.id!, data))
+		const result = JSON.parse(await createComment(data))
         const { error } = result as PostgrestSingleResponse<null>;
 
 		if (error?.message) {
@@ -32,11 +31,11 @@ export default function CommentUtil({comment}: {comment:IBlogDetailComment}) {
 			toast({
 				title: "Successfully Created Comment 🎉",
 			});
-			router.push(`/blog/${comment?.id}`);
+			router.push(`/blog/${blogId}`);
 		}
 	};
 
   return (
-    <Comment onHandleSubmit={OnHandle} blog={comment} />
+    <Comment onHandleSubmit={OnHandle} blogId={blogId} />
   )
 }

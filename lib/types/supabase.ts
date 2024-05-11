@@ -77,7 +77,7 @@ export type Database = {
           email: string | null
           id: string
           post: string
-          uid: string
+          url: string | null
         }
         Insert: {
           created_at?: string
@@ -86,7 +86,7 @@ export type Database = {
           email?: string | null
           id?: string
           post: string
-          uid: string
+          url: string | null
         }
         Update: {
           created_at?: string
@@ -95,7 +95,7 @@ export type Database = {
           email?: string | null
           id?: string
           post?: string
-          uid?: string
+          url: string | null
         }
         Relationships: [
           {

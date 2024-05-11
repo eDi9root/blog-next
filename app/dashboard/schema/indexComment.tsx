@@ -7,7 +7,7 @@ export const CommentFormSchema = z.object({
     }),
     post: z.string(),
     email: z.string(),
-    uid: z.string(),
+    url: z.string(),
 })
 
 

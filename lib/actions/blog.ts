@@ -31,14 +31,14 @@ export async function createBlog (data: SchemaType) {
   }
 }
 
-export async function createComment (blogId: string, data: SchemaTypeC,) {
-    const {...comment} = data
+export async function createComment (data: SchemaTypeC) {
 
     const supabase = await createSupabaseServerClient();
     const commentResult = await supabase
       .from("comment")
-      .insert(comment)
-      .eq("id", blogId)
+      .insert(data)
+	  .select("id")
+	  .single()
 
     if (commentResult.error?.message && !commentResult.data) {
       return JSON.stringify(commentResult);
@@ -145,14 +145,6 @@ export async function readBlogContentById(blogId: string) {
 			.single();
 }
 
-export async function ReadComment(blogId: string) {
-	const supabase = await createSupabaseServerClient();
-	return await supabase
-			.from("blog")
-			.select("*,blog_content(*),comment(*)")
-			.eq("id", blogId)
-			.single();
-}
 
 export async function Search(data: string) {
 	const supabase = await createSupabaseServerClient();
