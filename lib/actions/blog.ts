@@ -41,10 +41,10 @@ export async function createComment (data: SchemaTypeC) {
 	  .single()
 
     if (commentResult.error?.message && !commentResult.data) {
-      return JSON.stringify(commentResult);
+      	return JSON.stringify(commentResult);
     } else {
-      revalidatePath("/blog/" + data.post);
-      return JSON.stringify(commentResult);
+		revalidatePath("/blog/" + data.post);
+		return JSON.stringify(commentResult);
   }
 }
 

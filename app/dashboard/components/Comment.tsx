@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { cn } from "@/lib/utils"
 import { useUser } from "@/lib/store/user"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
+import SupabaseClient from "@/components/Right/SupabaseClient"
 
 
 export default function Comment({
@@ -22,6 +23,8 @@ export default function Comment({
 }) {
   const [isPending, startTransition] = useTransition()
   const user = useUser((state) => state.user)
+
+  const isUser = user?.id
 
   const form = useForm<z.infer<typeof CommentFormSchema>>({
     mode: "all",
@@ -65,12 +68,21 @@ export default function Comment({
                         </FormItem>
                     )}
                 />
+                {isUser && (
                 <div className='flex justify-end pt-5'>
-                    <Button className="flex gap-2">
-                        Post 
-                        <AiOutlineLoading3Quarters className={cn("animate-spin", {hidden: !isPending})} />
-                    </Button>
+                        <Button className="flex gap-2">
+                            Post 
+                            <AiOutlineLoading3Quarters className={cn("animate-spin", {hidden: !isPending})} />
+                        </Button>
+                  
                 </div>
+                )}  
+                {!isUser && (
+                    <div className="flex justify-center gap-x-4 pt-5 text-primary">
+                        <div className="pt-1">You have to login!</div>
+                        <SupabaseClient />
+                    </div>
+                )}
             </form>
         </Form>
         

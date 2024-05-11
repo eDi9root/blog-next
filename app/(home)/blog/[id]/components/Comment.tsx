@@ -4,6 +4,7 @@ import { Database } from '@/lib/types/supabase';
 import { createBrowserClient } from '@supabase/ssr';
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
+import { revalidatePath } from 'next/cache';
 
 export default function Comment({ blogId }: {blogId: string}) {
 
