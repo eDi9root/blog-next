@@ -4,7 +4,6 @@ import { Database } from '@/lib/types/supabase';
 import { createBrowserClient } from '@supabase/ssr';
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
-import { revalidatePath } from 'next/cache';
 
 export default function Comment({ blogId }: {blogId: string}) {
 
@@ -42,7 +41,7 @@ export default function Comment({ blogId }: {blogId: string}) {
     }, [])
 
     return (
-        <div>
+        <div className='min-h-72'>
             <div className='flex justify-center items-center w-full py-5'>
                 <h1 className='text-3xl'>What people are Saying</h1>
             </div>

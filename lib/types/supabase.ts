@@ -78,6 +78,7 @@ export type Database = {
           id: string
           post: string
           url: string | null
+          uid: string |null
         }
         Insert: {
           created_at?: string
@@ -87,6 +88,7 @@ export type Database = {
           id?: string
           post: string
           url: string | null
+          uid: string |null
         }
         Update: {
           created_at?: string
@@ -96,6 +98,7 @@ export type Database = {
           id?: string
           post?: string
           url: string | null
+          uid: string |null
         }
         Relationships: [
           {

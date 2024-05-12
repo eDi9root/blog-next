@@ -30,11 +30,12 @@ export default function Comment({
     mode: "all",
     resolver: zodResolver(CommentFormSchema),
     defaultValues: {
-      display_name: user?.user_metadata?.user_name || "",
+      display_name: user?.user_metadata?.user_name || "user",
       descript: "",
       post: blogId || "",
       email: user?.email || "",
       url: user?.user_metadata?.avatar_url || "/apple-touch-icon.png",
+      uid: isUser || "",
     },
   })
 
