@@ -18,6 +18,8 @@ export default function Dashboard() {
               <div className='text-muted-foreground max-w-sm text-sm'>
                 This page is a dashboard for users. 
                 This allows only to handle some parts of client tasks.
+                Dashboard for posting is only for admin now!
+                Please visit my Github to see how to work dashboard for admin
                  <br />
                 <div className='font-bold text-base'>
                     Client Posting Will Be Updated Soon!
