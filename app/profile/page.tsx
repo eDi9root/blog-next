@@ -15,7 +15,7 @@ export default function Dashboard() {
               <h1 className='text-2xl'>
                 Dashboard
               </h1>
-              <div className='text-muted-foreground max-w-sm text-sm'>
+              <div className='text-muted-foreground text-sm w-[80%]'>
                 This page is a dashboard for users. 
                 This allows only to handle some parts of client tasks.
                 Dashboard for posting is only for admin now!
