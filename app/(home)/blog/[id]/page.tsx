@@ -5,6 +5,7 @@ import Content from './components/Content';
 import PostTag from '@/app/dashboard/components/PostTag';
 import CommentUtil from '@/app/dashboard/components/CommentUtil';
 import Comment from './components/Comment'
+import { getTitle } from '@/lib/actions/blog';
 
 export async function generateStaticParams() {
 	const { data: blogs } = await fetch(
@@ -51,6 +52,8 @@ export default async function page({params}: {params: {id: string}}) {
 		process.env.SITE_URL + "/api/blog?id=" + params.id
 	).then((res) => res.json())) as {data: IBlog};
 
+  const { data: title } = await getTitle(params.id)
+
   
   if (!blog?.id) {
     return <h1>Not found</h1>
@@ -86,7 +89,7 @@ export default async function page({params}: {params: {id: string}}) {
           {blog?.descript}
         </div>
         <Content blogId={params.id} />
-        <CommentUtil blogId={params.id} />
+        <CommentUtil blogId={params.id} title={title?.title!} />
         <Comment blogId={params.id} />
     </div>
   )

@@ -50,6 +50,7 @@ export type IBlogDetailComment = {
         email: string;
         url: string;
         uid: string;
+        title: string;
     };
     user: {
         id: string;

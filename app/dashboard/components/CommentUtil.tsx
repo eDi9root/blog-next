@@ -3,12 +3,12 @@
 import Comment from '@/app/dashboard/components/Comment'
 import { SchemaTypeC } from '@/app/dashboard/schema/indexComment';
 import { toast } from '@/components/ui/use-toast';
-import { createComment } from '@/lib/actions/blog';
+import { createComment, getTitle } from '@/lib/actions/blog';
 import { PostgrestSingleResponse } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
-export default function CommentUtil({blogId}: {blogId: string}) {
+export default function CommentUtil({blogId, title}: {blogId: string, title: string}) {
     const router = useRouter();
 
     const OnHandle = async (data: SchemaTypeC) => {
@@ -36,6 +36,6 @@ export default function CommentUtil({blogId}: {blogId: string}) {
 	};
 
   return (
-    <Comment onHandleSubmit={OnHandle} blogId={blogId} />
+    <Comment onHandleSubmit={OnHandle} blogId={blogId} title={title} />
   )
 }

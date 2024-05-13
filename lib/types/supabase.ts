@@ -78,7 +78,8 @@ export type Database = {
           id: string
           post: string
           url: string | null
-          uid: string |null
+          uid: string | null
+          title: string | null
         }
         Insert: {
           created_at?: string
@@ -88,7 +89,8 @@ export type Database = {
           id?: string
           post: string
           url: string | null
-          uid: string |null
+          uid: string | null
+          title: string | null
         }
         Update: {
           created_at?: string
@@ -98,7 +100,8 @@ export type Database = {
           id?: string
           post?: string
           url: string | null
-          uid: string |null
+          uid: string | null
+          title: string | null
         }
         Relationships: [
           {

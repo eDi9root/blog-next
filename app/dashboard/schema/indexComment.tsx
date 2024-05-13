@@ -9,6 +9,7 @@ export const CommentFormSchema = z.object({
     email: z.string(),
     url: z.string(),
     uid: z.string(),
+    title: z.string(),
 })
 
 

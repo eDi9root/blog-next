@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 
 import { IoCreateOutline } from "react-icons/io5";
 import Link from 'next/link';
+import CommentTable from './components/CommentTable';
 
 export default function Dashboard() {
   return (
@@ -26,24 +27,29 @@ export default function Dashboard() {
             </div>
             <div className="border border-[#5050505b] text-neutral-300 my-4" />
 
-            {/* <div className='bg-popover rounded-lg space-y-2'>
+            <div className='bg-popover rounded-lg space-y-2'>
               <div className='flex items-center justify-between gap-x-6 p-4'>
                 <h2>Blog Table</h2>
-                <Link href="/dashboard/blog/create">
+                <Link href="/">
                   <Button variant="secondary" className='gap-x-2'>
-                    Create <IoCreateOutline />
+                    Not in Service <IoCreateOutline />
                   </Button>
                 </Link>
               </div>
+            </div>
 
-              <BoardTable />
-            </div> */}
+            <div className="border border-[#5050505b] text-neutral-300 my-10" />
+
+            <div className='bg-popover rounded-lg space-y-2'>
+              <div className='flex items-center justify-between gap-x-6 p-4'>
+                <h2>Comment Table</h2>
+              </div>
+              <CommentTable />
+              
+            </div>
 
           </div>
         </div> 
-
-        
-
       
     </div>
   )

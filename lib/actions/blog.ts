@@ -7,6 +7,7 @@ import { IBlog } from '../types';
 import { SchemaTypeC } from '@/app/dashboard/schema/indexComment';
 
 const DASHBOARD = "/dashboard/blog";
+const PROFILE = "/profile";
 
 
 export async function createBlog (data: SchemaType) {
@@ -101,6 +102,26 @@ export async function deleteBlogById(blogId: string) {
 	return JSON.stringify(result);
 }
 
+export async function deleteCommentById(uid: string, pid: string) {
+	const supabase = await createSupabaseServerClient();
+	const result = await supabase.from("comment").delete().eq("id", uid);
+	revalidatePath(PROFILE);
+	revalidatePath("/blog/" + pid);
+	return JSON.stringify(result);
+}
+
+// export async function updateComment(uid: string, pid: string, data: string) {
+// 	const supabase = await createSupabaseServerClient();
+// 	const result = await supabase
+// 		.from("comment")
+// 		.update({ descript: data })
+// 		.eq("id", uid)
+
+// 	revalidatePath(PROFILE);
+// 	revalidatePath("/blog/" + pid);
+// 	return JSON.stringify(result);
+// }
+
 export async function updateBlogById(blogId: string, data: IBlog) {
 	const supabase = await createSupabaseServerClient();
 	const result = await supabase.from("blog").update(data).eq("id", blogId);
@@ -154,4 +175,13 @@ export async function Search(data: string) {
 		.eq("is_public", true)
 		.textSearch('combined_search_column', data)
 		.order("created_at", { ascending: true });
+}
+
+export async function getTitle(data: string) {
+	const supabase = await createSupabaseServerClient();
+	return supabase
+		.from("blog")
+		.select("title")
+		.eq("id",data)
+		.single()
 }

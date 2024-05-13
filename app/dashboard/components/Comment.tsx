@@ -16,10 +16,12 @@ import SupabaseClient from "@/components/Right/SupabaseClient"
 
 export default function Comment({
     onHandleSubmit,
-    blogId
+    blogId,
+    title,
 }: {
     onHandleSubmit:(data: SchemaTypeC) =>void
     blogId: string
+    title: string
 }) {
   const [isPending, startTransition] = useTransition()
   const user = useUser((state) => state.user)
@@ -36,6 +38,7 @@ export default function Comment({
       email: user?.email || "",
       url: user?.user_metadata?.avatar_url || "/apple-touch-icon.png",
       uid: isUser || "",
+      title: title || "",
     },
   })
 
