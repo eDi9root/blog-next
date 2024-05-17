@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
@@ -12,6 +12,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://edi9root-blog.vercel.app/"),
+
+  manifest: "/manifest.json",
 
   icons:{
     icon:['/favicon.ico?v=4'],
@@ -44,6 +46,10 @@ export const metadata: Metadata = {
     images: ['./opengraph-image.svg'],
   },
 	keywords: ["Edi9root", "JunseokOh", "Personal Blog"],
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({
