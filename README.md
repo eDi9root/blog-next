@@ -13,14 +13,14 @@
 
 </br>
 
-![alt](https://imgur.com/UWd4WqM.png)
+![alt](https://imgur.com/dzmfP2J.png)
 
 
 
 ## SaaS
 Through a SaaS model, developed admin and user dashboards, comment sections, tagging systems, search functionalities, and Markdown support. The image below showcases the admin-exclusive dashboard.
 
-![alt](https://imgur.com/PnIFVln.png)
+![alt](https://imgur.com/SUX2xjx.png)
 
 ## Getting Started
 
