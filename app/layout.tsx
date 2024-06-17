@@ -7,6 +7,7 @@ import RightBar from "@/components/Right/RightBar";
 import SessionProvider from "@/components/SessionProvider";
 import { Toaster } from "@/components/ui/toaster";
 import Sleft from "@/components/Sleft/Sleft";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -79,6 +80,7 @@ export default function RootLayout({
             
           </ThemeProvider>
           <SessionProvider />
+          <Analytics />
       </body>
     </html>
   );
