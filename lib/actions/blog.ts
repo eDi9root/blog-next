@@ -55,7 +55,7 @@ export async function readBlog() {
 		.from("blog")
 		.select("*")
 		.eq("is_public", true)
-		.order("created_at", { ascending: true });
+		.order("created_at", { ascending: false });
 }
 
 export async function readBlogId() {
@@ -174,7 +174,7 @@ export async function Search(data: string) {
 		.select("*")
 		.eq("is_public", true)
 		.textSearch('combined_search_column', data)
-		.order("created_at", { ascending: true });
+		.order("created_at", { ascending: false });
 }
 
 export async function getTitle(data: string) {
