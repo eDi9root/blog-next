@@ -17,7 +17,7 @@ export default function ClientPagination() {
 
     const searchParams = useSearchParams()
     const page = searchParams.get('page') ?? '1'
-    const per_page = searchParams.get('per_page') ?? '5'
+    const per_page = searchParams.get('per_page') ?? '8'
 
     const isActive = Number(page)
 
